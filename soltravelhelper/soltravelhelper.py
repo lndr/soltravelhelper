@@ -54,3 +54,19 @@ def time_constant_velocity(position, destination, velocity, date=None):
     """
 
     return dt.timedelta(seconds=distance(position, destination, date) / velocity)
+
+
+def velocity_after_time(acceleration, time):
+    """Calculate velocity after accelerating for a given time.
+
+    Args:
+        acceleration: Acceleration in m/s^2.
+        time: Time in seconds or as dt.timedelta.
+
+    Returns:
+        Velocity in m/s.
+    """
+
+    if type(time) == dt.timedelta:
+        time = time.total_seconds()
+    return acceleration * time
