@@ -38,3 +38,19 @@ def time_constant_acceleration(position, destination, acceleration, date=None):
     """
 
     return dt.timedelta(seconds=2 * (distance(position, destination, date) / acceleration) ** 0.5)
+
+
+def time_constant_velocity(position, destination, velocity, date=None):
+    """Predict travel time with constant velocity.
+
+    Args:
+        position: Planet the journey starts at.
+        destination: Destination of the journey.
+        velocity: Velocity in m/s.
+        date: Date the journey is started (defaults to current time).
+
+    Returns:
+        Travel time as dt.timedelta.
+    """
+
+    return dt.timedelta(seconds=distance(position, destination, date) / velocity)

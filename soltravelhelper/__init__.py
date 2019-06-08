@@ -1,1 +1,1 @@
-from .soltravelhelper import distance, time_constant_acceleration
+from .soltravelhelper import distance, time_constant_acceleration, time_constant_velocity
