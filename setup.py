@@ -45,9 +45,9 @@ setup(
     # https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
-        'Intended Audience :: Science/Research',
+        'Intended Audience :: Other Audience',
         'License :: OSI Approved :: BSD License',
         'Programming Language :: Python :: 3',
-        'Topic :: Scientific/Engineering',
+        'Topic :: Games/Entertainment',
     ],
 )
