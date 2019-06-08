@@ -70,3 +70,27 @@ def velocity_after_time(acceleration, time):
     if type(time) == dt.timedelta:
         time = time.total_seconds()
     return acceleration * time
+
+
+class Traveler:
+    """Class to represents a traveling group / spaceship."""
+
+    def __init__(self, position='earth', date=None):
+        """Class constructor.
+
+        Args:
+            position: Starting planet (defaults to earth).
+            date: Starting date (defaults to current time).
+        """
+        if not date:
+            date = dt.datetime.now()
+        self.date = date
+        self.current_position = position
+
+    def idle_hours(self, hours):
+        """Wait for a given number of hours (add them to date).
+
+        Args:
+            hours: Hours the group / spaceship idles.
+        """
+        self.date += dt.timedelta(hours=hours)
