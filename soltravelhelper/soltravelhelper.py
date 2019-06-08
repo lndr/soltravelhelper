@@ -2,6 +2,9 @@ import astropy.coordinates as ac
 import astropy.time as at
 import astropy.units as au
 import datetime as dt
+import logging as lg
+
+logger = lg.getLogger('travellogbook')
 
 
 def distance(position, destination, date=None):
@@ -86,6 +89,8 @@ class Traveler:
             date = dt.datetime.now()
         self.date = date
         self.current_position = position
+        logger.info('Started journey on {} on {}'.format(
+            self.current_position, self.date.strftime('%Y-%m-%d at %H:%M:%S')))
 
     def idle_hours(self, hours):
         """Wait for a given number of hours (add them to date).
@@ -94,6 +99,8 @@ class Traveler:
             hours: Hours the group / spaceship idles.
         """
         self.date += dt.timedelta(hours=hours)
+        logger.info('Idled on {} until {}'.format(
+            self.current_position, self.date.strftime('%Y-%m-%d at %H:%M:%S')))
 
     def travel_constant_acceleration(self, destination, acceleration):
         """Travel to the given planet using the constant acceleration method.
@@ -105,6 +112,8 @@ class Traveler:
         self.date += time_constant_acceleration(self.current_position, destination,
                                                 acceleration, self.date)
         self.current_position = destination
+        logger.info('Arrived on {} on {}'.format(
+            self.current_position, self.date.strftime('%Y-%m-%d at %H:%M:%S')))
 
     def travel_constant_velocity(self, destination, velocity):
         """Travel to the given planet using the constant velocity method.
@@ -116,3 +125,5 @@ class Traveler:
         self.date += time_constant_velocity(self.current_position, destination,
                                             velocity, self.date)
         self.current_position = destination
+        logger.info('Arrived on {} on {}'.format(
+            self.current_position, self.date.strftime('%Y-%m-%d at %H:%M:%S')))
