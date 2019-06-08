@@ -94,3 +94,25 @@ class Traveler:
             hours: Hours the group / spaceship idles.
         """
         self.date += dt.timedelta(hours=hours)
+
+    def travel_constant_acceleration(self, destination, acceleration):
+        """Travel to the given planet using the constant acceleration method.
+
+        Args:
+            destination: Destination of the journey.
+            acceleration: Acceleration in m/s^2.
+        """
+        self.date += time_constant_acceleration(self.current_position, destination,
+                                                acceleration, self.date)
+        self.current_position = destination
+
+    def travel_constant_velocity(self, destination, velocity):
+        """Travel to the given planet using the constant velocity method.
+
+        Args:
+            destination: Destination of the journey.
+            velocity: Velocity in m/s^2.
+        """
+        self.date += time_constant_velocity(self.current_position, destination,
+                                            velocity, self.date)
+        self.current_position = destination
